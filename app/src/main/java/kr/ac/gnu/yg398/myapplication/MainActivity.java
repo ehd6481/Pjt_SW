@@ -50,11 +50,19 @@ public class MainActivity extends AppCompatActivity
         personList = new ArrayList<HashMap<String, String>>();
         getData("http://35.194.105.42/PHP_connection.php");
         Button btnWrite = (Button)findViewById(R.id.btnWrite);
+        Button btnBoard = (Button)findViewById(R.id.btnBoard);
 
         btnWrite.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(getApplicationContext(), write.class);
+                startActivity(intent);
+            }
+        });
+        btnBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), boardList.class);
                 startActivity(intent);
             }
         });
@@ -94,7 +102,7 @@ public class MainActivity extends AppCompatActivity
                     new int[]{R.id.age, R.id.name, R.id.address}
                     );
 
-            list.setAdapter(adapter);;
+            list.setAdapter(adapter);
         }catch (JSONException e)
         {
             e.printStackTrace();

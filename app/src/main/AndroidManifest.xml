@@ -20,6 +20,16 @@
                 <action android:name="android.intent.action.WRITE" />
             </intent-filter>
         </activity>
+        <activity android:name=".boardList">
+            <intent-filter>
+                <action android:name="android.intent.action.BOARDLIST" />
+            </intent-filter>
+        </activity>\
+        <activity android:name=".ItemView">
+            <intent-filter>
+                <action android:name="android.intent.action.ITEMVIEW" />
+            </intent-filter>
+        </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
