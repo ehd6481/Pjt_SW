@@ -52,7 +52,7 @@ public class boardList extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.board_list);
 
-        listView=(ListView)findViewById(R.id.listBoard);
+        listView = (ListView)findViewById(R.id.listBoard);
         btnWrite = (Button)findViewById(R.id.btnWrite);
 
         arrBoard=new ArrayList<HashMap<String, String>>();
