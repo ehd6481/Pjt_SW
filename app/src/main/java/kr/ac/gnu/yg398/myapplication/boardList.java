@@ -47,6 +47,7 @@ public class boardList extends AppCompatActivity
     private static final String TAG_NICK = "nick";
     private static final String TAG_HIT = "hits";
     private static final String TAG_DATE = "date";
+    private static final String TAG_DESCRIPTION = "contents";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -66,6 +67,11 @@ public class boardList extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), ItemView.class);
+                intent.putExtra("subject", arrBoard.get(i).get(TAG_SUBJECT));
+                intent.putExtra("nick",arrBoard.get(i).get(TAG_NICK));
+                intent.putExtra("date",arrBoard.get(i).get(TAG_DATE));
+                intent.putExtra("hits",arrBoard.get(i).get(TAG_HIT));
+                intent.putExtra("contents",arrBoard.get(i).get(TAG_DESCRIPTION));
                 startActivity(intent);
             }
         });
@@ -106,6 +112,7 @@ public class boardList extends AppCompatActivity
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 Date date = df.parse(strDate);
                 strDate = new SimpleDateFormat("MM-dd").format(date);
+                String contents = c.getString(TAG_DESCRIPTION);
 
                 HashMap<String,String> boardItem = new HashMap<String, String>();
 
@@ -114,6 +121,7 @@ public class boardList extends AppCompatActivity
                 boardItem.put(TAG_NICK,nick);
                 boardItem.put(TAG_HIT,hit);
                 boardItem.put(TAG_DATE,strDate);
+                boardItem.put(TAG_DESCRIPTION, contents);
 
                 arrBoard.add(boardItem);
             }

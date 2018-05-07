@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG_ID = "id";
     private static final String TAG_NAME = "name";
     private static final String TAG_ADD = "address";
-
-
-
     JSONArray people = null;
 
     ArrayList<HashMap<String,String>> personList;
@@ -45,14 +42,18 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+    }
+    protected void onResume(){
+        super.onResume();
+        setContentView(R.layout.activity_main);
+        toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
-        list = (ListView) findViewById(R.id.listView);
+        list = findViewById(R.id.listView);
         personList = new ArrayList<HashMap<String, String>>();
         getData("http://35.194.105.42/PHP_connection.php");
-        Button btnWrite = (Button)findViewById(R.id.btnWrite);
-        Button btnBoard = (Button)findViewById(R.id.btnBoard);
+        Button btnWrite = findViewById(R.id.btnWrite);
+        Button btnBoard = findViewById(R.id.btnBoard);
 
         btnWrite.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -68,9 +69,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
     }
-
 
     protected void showList()
     {
