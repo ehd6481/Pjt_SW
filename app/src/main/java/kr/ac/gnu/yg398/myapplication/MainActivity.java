@@ -1,10 +1,10 @@
 package kr.ac.gnu.yg398.myapplication;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.os.AsyncTask;
-import android.app.Activity;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -19,13 +19,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
 {
-
+    Toolbar toolbar;
     String myJson;
 
     private static final String TAG_RESULT = "result";
@@ -46,6 +45,9 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+
         list = (ListView) findViewById(R.id.listView);
         personList = new ArrayList<HashMap<String, String>>();
         getData("http://35.194.105.42/PHP_connection.php");

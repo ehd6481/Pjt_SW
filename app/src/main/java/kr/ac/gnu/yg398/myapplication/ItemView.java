@@ -3,8 +3,6 @@ package kr.ac.gnu.yg398.myapplication;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -14,8 +12,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.Buffer;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -86,7 +82,7 @@ public class ItemView extends AppCompatActivity{
         GetDataJson g = new GetDataJson();
         g.execute(url);
     }
-    protected  void showList()
+    protected void showList()
     {
         String sub=null;
         String nick=null;

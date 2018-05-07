@@ -24,10 +24,15 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOARDLIST" />
             </intent-filter>
-        </activity>\
+        </activity>
         <activity android:name=".ItemView">
             <intent-filter>
                 <action android:name="android.intent.action.ITEMVIEW" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".PostWrite">
+            <intent-filter>
+                <action android:name="android.intent.action.POSTWRITE" />
             </intent-filter>
         </activity>
     </application>

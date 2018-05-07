@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -12,14 +15,12 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,7 +29,7 @@ import java.util.HashMap;
 public class boardList extends AppCompatActivity
 {
     ListView listView;
-
+    Toolbar toolbar;
     ArrayList<HashMap<String,String>> arrBoard;
 
     JSONArray list=null;
@@ -52,6 +53,9 @@ public class boardList extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.board_list);
 
+        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+
         listView = (ListView)findViewById(R.id.listBoard);
         btnWrite = (Button)findViewById(R.id.btnWrite);
 
@@ -66,7 +70,24 @@ public class boardList extends AppCompatActivity
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id = item.getItemId();
+
+        if( id == R.id.newPost ){
+            Intent intent = new Intent(getApplicationContext(), PostWrite.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     protected void showList()
     {
         try
